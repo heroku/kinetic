@@ -1,6 +1,6 @@
 -module(kinetic_stream_tests).
 
--include("kinetic.hrl").
+-include_lib("kinetic/include/kinetic.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 test_setup() ->
@@ -165,4 +165,3 @@ wait_for_flush() ->
         1000 ->
             bad
     end.
-

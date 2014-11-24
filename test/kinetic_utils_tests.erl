@@ -1,6 +1,6 @@
 -module(kinetic_utils_tests).
 
--include("kinetic.hrl").
+-include_lib("kinetic/include/kinetic.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 
@@ -48,10 +48,10 @@ test_fetch_and_return_url() ->
     {ok, <<"{\"hello\": \"world\"}">>} = kinetic_utils:fetch_and_return_url("/json", text).
 
 test_json_encoding_decoding() ->
-    {error, _} = kinetic_utils:encode({whatever}),
+    {error, _} = kinetic_utils:encode([{whatever}]),
     {error, _} = kinetic_utils:decode(<<"{\"whatever\"}">>),
     {error, _} = kinetic_utils:decode(<<"hello">>),
-    [] = kinetic_utils:decode(<<"">>),
+    [] = kinetic_utils:decode(<<"[]">>),
     {error, not_a_dict} = kinetic_utils:decode(<<"\"hello\"">>),
     [{<<"hello">>, <<"world">>}] = kinetic_utils:decode(<<"{\"hello\": \"world\"}">>).
 
@@ -63,5 +63,3 @@ test_endpoint() ->
         Url = Service ++ "." ++ Region ++ ".amazonaws.com",
         Url = kinetic_utils:endpoint(Service, Region)
     end, Regions).
-
-

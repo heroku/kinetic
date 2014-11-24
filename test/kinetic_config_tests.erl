@@ -1,6 +1,6 @@
 -module(kinetic_config_tests).
 
--include("kinetic.hrl").
+-include_lib("kinetic/include/kinetic.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 
@@ -130,6 +130,3 @@ test_update_data() ->
             expiration_seconds=64323799933},
         region="us-east-1",
         date=_Date3}} = kinetic_config:update_data([{metadata_base_url, "no_expire"}]).
-
-
-

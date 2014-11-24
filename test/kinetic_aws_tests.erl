@@ -1,6 +1,6 @@
 -module(kinetic_aws_tests).
 
--include("kinetic.hrl").
+-include_lib("kinetic/include/kinetic.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 
@@ -74,5 +74,3 @@ test_signature_valid() ->
                            "something"),
     kinetic_aws:bench(1),
     ok.
-
-

@@ -1,6 +1,6 @@
 -module(kinetic_iam_tests).
 
--include("kinetic.hrl").
+-include_lib("kinetic/include/kinetic.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 test_setup() ->
@@ -88,4 +88,3 @@ test_fetching_keys() ->
     {error, role_stuff} = kinetic_iam:get_aws_keys("error"),
     {error, no_success} = kinetic_iam:get_aws_keys("code_error"),
     ok.
-

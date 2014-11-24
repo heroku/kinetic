@@ -27,22 +27,22 @@ fetch_and_return_url(Url, text) ->
 decode(<<"">>) ->
     [];
 decode(Body) ->
-    try jiffy:decode(Body) of
-        {Decoded} -> % enforces the dictionary
+    try jsx:decode(Body) of
+        Decoded when is_list(Decoded) -> % enforces the dictionary
             Decoded;
-
         _ ->
             {error, not_a_dict}
     catch
-        {error, E} ->
-            {error, E}
+        _:R ->
+            {error, R}
     end.
 
 encode(Body) ->
-    try jiffy:encode(Body)
+    try
+        jsx:encode(Body)
     catch
-        {error, E} ->
-            {error, E}
+        _:R ->
+            {error, R}
     end.
 
 % Internal

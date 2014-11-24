@@ -1,6 +1,6 @@
 -module(kinetic_sup_tests).
 
--include("kinetic.hrl").
+-include_lib("kinetic/include/kinetic.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 test_setup() ->
@@ -55,4 +55,3 @@ test_supervisor() ->
     kinetic_sup:stop(Pid),
     {error, _} = kinetic_config:get_args(),
     process_flag(trap_exit, false).
-

@@ -1,6 +1,6 @@
 -module(kinetic_tests).
 
--include("kinetic.hrl").
+-include_lib("kinetic/include/kinetic.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 
@@ -11,7 +11,7 @@ test_arg_setup(Opts) ->
     meck:expect(kinetic_utils, fetch_and_return_url,
                 fun(_MetaData, text) -> {ok, "us-east-1b"} end),
 
-    {ok, _args} = kinetic_config:update_data(Opts), 
+    {ok, _args} = kinetic_config:update_data(Opts),
 
     meck:new(lhttpc),
     meck:expect(lhttpc, request, fun
@@ -97,5 +97,3 @@ test_error_functions() ->
         [create_stream, delete_stream, describe_stream, get_records, get_shard_iterator,
          list_streams, merge_shards, put_record, split_shard]
     ).
-
-
