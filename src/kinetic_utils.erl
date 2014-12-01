@@ -27,7 +27,7 @@ fetch_and_return_url(Url, text) ->
 decode(<<"">>) ->
     [];
 decode(Body) ->
-    try jsx:decode(Body) of
+    try jsxn:decode(Body) of
         Decoded when is_list(Decoded) -> % enforces the dictionary
             Decoded;
         _ ->
@@ -39,7 +39,7 @@ decode(Body) ->
 
 encode(Body) ->
     try
-        jsx:encode(Body)
+        jsxn:encode(Body)
     catch
         _:R ->
             {error, R}
